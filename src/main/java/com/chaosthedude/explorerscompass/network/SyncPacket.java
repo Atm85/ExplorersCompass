@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 import com.chaosthedude.explorerscompass.ExplorersCompass;
+import com.chaosthedude.explorerscompass.util.StructureUtils;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 
@@ -48,7 +49,7 @@ public class SyncPacket {
 				dimensions.add(buf.readResourceLocation());
 			}
 			ResourceLocation typeKey = buf.readResourceLocation();
-			if (structureKey != null) {
+			if (structureKey != null && dimensions.size() > 0) {
 				allowedStructureKeys.add(structureKey);
 				dimensionKeysForAllowedStructureKeys.putAll(structureKey, dimensions);
 				structureKeysToTypeKeys.put(structureKey, typeKey);
